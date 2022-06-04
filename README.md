@@ -47,6 +47,7 @@ One mentionable thing, which we all considered very beautiful as well as meaning
 This project was a team effort, and made for the submission of our 6th semester project submission for the course of Pattern Recognition. My team members that helped me a lot were [Yashwant Meena](https://github.com/pAge444) and [Yanshul Narotra](https://github.com/Yanshul-Narotra). I would also like to thank my mentors and professor, who introduced and guided me towards world of Pattern recognition, and made me fall a little in love with Machine learning.
 
 If you like the project, please star it and if you would like to contribute, fork the repo and create a pull request.
+
 Adios.
 
 ---
