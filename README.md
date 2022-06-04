@@ -18,8 +18,35 @@ For our intutive of the research paper, we have to first explain the methodology
 > 
 > 2. __Training the model to predict probable tag-sets of each sequence of inputs:__ Now, each sequence of input is a tag-set, which will be used to predict the tag-sets of the words(defined by a certain tag-set) 'f' words after the current tag-set. In laymen language, if 'f' is 2 and you are currently at 3rd word, you will predict the probable tag-set of the (2+3 = 5th) word. Figure-1 explains the process of using RNN for this. 
 > 
-> 3. __Back-propagating through the trained RNN model to predict the tags from the predicted tag-sets:__ In the previous step, we predicted the tag-sets of the words using the input sequences of tag-sets for corresponding words. After this, we will use the predicted tag sets to predict the individual tags for words 'f' previous to the current word. the last step and this step together, let's us use the context of sequence of words coming before and after a particular word.
+> 3. __Back-propagating through the trained RNN model to predict the tags from the predicted tag-sets:__ In the previous step, we predicted the tag-sets of the words using the input sequences of tag-sets for corresponding words. After this, we will use the predicted tag sets to predict the individual tags for words 'f' previous to the current word. the last step and this step together, let's us use the context of sequence of words coming before and after a particular word. Figure-2 represents the process.
 
 While this approach was very thorough and complex, we decided to use this approach, but with slight modifications. For our approach, we did not back propagate through the trained RNN for second training phase, but predicted the tags from tag-sets in the first attempt only. This removed the context of words coming after a particular word, while predicting its POS tag. 
+
 On the other hand, we did not face any uncertainity on what value of 'f' to be chosen, which as described in the research paper further, had a very great impact on the accuracy of model. We will not go in that much detail and explain the comparision of our implementation results with the results of the research paper implementation. The implementation documentation of our approach can be understood in the [Jupyter notebook](https://github.com/HardySLAYS/POS-tagging-using-RNN/blob/main/final_project.ipynb) itself. You can go through it first.
 
+The structure of RNN model we trained is provided below.
+
+## Figures:
+![fig1](https://github.com/HardySLAYS/POS-tagging-using-RNN/blob/main/pics/fig1.png)
+<p align="center">Figure-1</p>
+
+
+![fig2](https://github.com/HardySLAYS/POS-tagging-using-RNN/blob/main/pics/fig2.png)
+<p align="center">Figure-2</p>
+
+![rnn model](https://github.com/HardySLAYS/POS-tagging-using-RNN/blob/main/pics/rnn.png)
+<p align="center">Structure of RNN model</p>
+
+## Comparision of our implementation with research papers methodology:
+Overall, the accuracy shown in research paper on Penn Trebank's POS tagged dataset was about 92%, which was very near to the traditional Hidden Markov Model's accuracy. While the implementation we had done gave a shocking accuracy of about 96.8% for the same dataset. So, what went wrong? One of the reasons we could deduce was the fact that they over-considered the context of nearbywords while underestimating the context of the current word itself. Another one was that the indirect prediction of tags in two step process seemed to have opposite action from the expectation, and backfired while predicting the POS tags. Hence, we can say with surity that a simple model is a good model in this case.
+
+## Bonus: Praising the creativity of intution:
+One mentionable thing, which we all considered very beautiful as well as meaningful was the conversion of converting the words into corresponding tag-sets. Though there are some fatal flaws regarding this approach, but can we just take some time to be amazed at the beauty of this approach :heart_eyes::heart_eyes:. The down-side that should really be mentioned is that after the initial training we are bounded for considering the words with some probable tags only. This generates two problems: first is that the words is considered to have tags none other than the mentioned tags here, and second is that for words that are not having a corresponding tag set from the training data-set, will be considered an unknown word and its prediction can go totally wrong.
+
+## Prolouge
+This project was a team effort, and made for the submission of our 6th semester project submission for the course of Pattern Recognition. My team members that helped me a lot were [Yashwant Meena](https://github.com/pAge444) and [Yanshul Narotra](https://github.com/Yanshul-Narotra). I would also like to thank my mentors and professor, who introduced and guided me towards world of Pattern recognition, and made me fall a little in love with Machine learning.
+
+If you like the project, please star it and if you would like to contribute, fork the repo and create a pull request.
+Adios.
+
+---
